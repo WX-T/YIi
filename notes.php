@@ -48,3 +48,10 @@
   // https://www.example.com/images/logo.gif
   echo Url::to('@web/images/logo.gif', 'https');
   
+  /**
+   *=========================================页面加载====================================================
+  */
+  //加载页面,同时显示头部和尾部
+  $this->render('页面' , $data);
+  //加载页面,不加载头部和尾部，(加载页面块，ajax弹出修改时弹出的页面)
+  $this->renderPartial('html页面' , $data);
