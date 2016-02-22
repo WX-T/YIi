@@ -95,3 +95,5 @@
   User::find()->batch(10);  //每次取 10 条数据 
   
   User::find()->each(10);  //每次取 10 条数据， 迭代查询
+//读取config/params.php的配置
+ echo Yii::$app->params['name'];
