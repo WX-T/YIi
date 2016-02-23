@@ -58,6 +58,11 @@
   
   //===========================================数据库查询====================================================
   
+  User::->from('ECMS_ADMIN A')
+  ->leftJoin('ECMS_ADMININFO B','A.ID=B.ADMINID')
+  ->leftJoin('ECMS_ROLE C','C.ID=A.ROLEID')
+  ->leftJoin('ECMS_DEPARTMENT D','C.DEPARTID=D.ID')->count('A.ID'); //左链接例子
+  
   User::find()->all();    //此方法返回所有数据；
   
   User::findOne($id);   //此方法返回 主键 id=1  的一条数据(举个例子)； 
