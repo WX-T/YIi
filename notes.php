@@ -74,6 +74,8 @@
   
   User::find()->andWhere(['sex' => '男', 'age' => '24'])->count('id');   //统计符合条件的总条数；
   
+  User::find()->select(['TITLE'])->orderBy("TITLE")->asArray()->all();   //group by用法
+  
   User::find()->one();    //此方法返回一条数据；
   
   User::find()->all();    //此方法返回所有数据；
