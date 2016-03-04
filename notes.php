@@ -207,22 +207,13 @@
     $admin->password =$password;  
     if($admin->save() > 0){echo "添加成功"; }else{echo "添加失败"; }  
     五、修改  
-    Post::model()->updateAll($attributes,$condition,$params);  
-    $count=Admin::model()->updateAll(array('username'=>'11111','password'=>'11111'),'password=:pass',array(':pass'=>'1111a1'));  
-    if($count> 0){ echo "修改成功"; }else{echo "修改失败"; }  
-       
-    $rt= PostList::model()->updateAll(array('status'=>'1'),'staff_id=:staff AND host_id=:host',array(':staff'=>$staff_id,':host'=>$host_id));  
-       
-    //$pk主键,可以是一个也可以是一个集合,$attributes是要修改的字段的集合,$condition条件,$params传入的值  
-    Post::model()->updateByPk($pk,$attributes,$condition,$params);  
-    $count=Admin::model()->updateByPk(1,array('username'=>'admin','password'=>'admin'));  
-    $count=Admin::model()->updateByPk(array(1,2),array('username'=>'admin','password'=>'admin'),'username=:name',array(':name'=>'admin'));  
-    if($count>0){echo "修改成功"; }else{echo "修改失败"; }  
-       
-    Post::model()->updateCounters($counters,$condition,$params);  
-    $count=Admin::model()->updateCounters(array('status'=>1),'username=:name',array(':name'=>'admin'));  
-    if($count> 0){ echo "修改成功"; }else{echo "修改失败"; }  
-    //array('status'=>1)代表数据库中的admin表根据条件username='admin',查询出的所有结果status字段都自加1  
+    $model = Post::find()->where(['id'=>1])->one();   //查询修改的值
+    $model->name = '张三'; //执行搜索
+    if($model->save()){
+      echo '成功';
+    }else{
+     echo '失败';
+    }  //保存
     六、删除  
     //deleteAll  
     Post::model()->deleteAll($condition,$params);  
